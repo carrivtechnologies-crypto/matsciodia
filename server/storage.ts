@@ -34,6 +34,7 @@ export interface IStorage {
   // User operations (mandatory for Replit Auth)
   getUser(id: string): Promise<User | undefined>;
   upsertUser(user: UpsertUser): Promise<User>;
+  getTeachers(): Promise<User[]>;
   
   // Course operations
   getCourses(): Promise<Course[]>;
@@ -342,6 +343,11 @@ export class DatabaseStorage implements IStorage {
       .update(chatMessages)
       .set({ read: true })
       .where(eq(chatMessages.id, messageId));
+  }
+
+  // Teacher operations
+  async getTeachers(): Promise<User[]> {
+    return await db.select().from(users).where(eq(users.role, "teacher"));
   }
 }
 

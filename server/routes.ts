@@ -236,7 +236,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Teachers route
   app.get("/api/teachers", isAuthenticated, async (req, res) => {
     try {
-      const teachers = await db.select().from(users).where(eq(users.role, "teacher"));
+      const teachers = await storage.getTeachers();
       res.json(teachers);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch teachers" });
