@@ -1,0 +1,302 @@
+Mega Prompt — Matsci Super Admin Panel Dashboard (Full Design + Engineering + Role-Based Flow)
+
+Instruction to AI Model:
+Design and prototype a modern, fully connected, error-free, responsive super admin dashboard for the Matsci EdTech platform. The system must include role-based access control, deep UI flows for every entity (Course, Class, Test, Students, Sales, Campaigns), and ensure every action leads to a follow-up screen (confirmation, details page, analytics). Build it as a production-ready design + interactive prototype with scalable components and mock backend connections.
+
+🎨 Global Design System
+
+Theme: Modern, minimal, card-based with glassmorphism & neumorphism accents.
+
+Colors:
+
+Primary: Accent Blue (#2563EB)
+
+Secondary: Teal (#14B8A6)
+
+Neutral: Gray (#F5F6FA), White (#FFFFFF)
+
+Alerts: Red (#EF4444), Success Green (#22C55E)
+
+Typography: Poppins / Inter (Bold for headings, Regular for body, Semibold for table headers).
+
+Spacing: 8px grid.
+
+States:
+
+Loading → skeleton loaders.
+
+Empty → “No data yet” with illustration + CTA to create.
+
+Error → Friendly error with “Retry” + back to Dashboard.
+
+UI Components:
+
+Buttons (Primary, Secondary, Ghost, FAB).
+
+Cards (Stats, Data blocks, Analytics).
+
+Modals (Create, Edit, Delete confirmation).
+
+Tables (sortable, filterable, paginated).
+
+Charts (line, bar, pie with smooth animation).
+
+Forms (validated with inline errors).
+
+Toasts (Success/Error).
+
+Navigation: Sidebar (sticky, collapsible) + Top navbar.
+
+🔐 Role-Based Access Control (RBAC)
+
+Super Admin → Full access (Courses, Classes, Tests, Analytics, Coupons, Campaigns, Users, Settings).
+
+Teacher → Manage classes, upload materials, create tests, chat with students; cannot view sales/analytics or add users.
+
+Sales/Marketing Team → Only access Analytics, Campaigns, Coupons; no course creation or class/test management.
+
+Support Team (optional) → Student/Teacher management, chat, issue resolution.
+
+UI adapts to role: hidden sidebar items if not permitted.
+
+🏠 1. Dashboard (Home)
+
+Super Admin View:
+
+Stats cards: Total Students, Total Teachers, Sales (₹), Active Courses, Active Campaigns.
+
+Charts: Sales trend, Student growth, Coupon usage.
+
+Quick Actions (FABs): Create Course, Create Class, Create Test, Launch Campaign.
+
+Clicking card → details page (Students → Student Table, Sales → Analytics, etc.).
+
+Teacher View:
+
+My Courses, My Classes, Upcoming Tests.
+
+Sales Team View:
+
+Sales stats, Conversion funnel, Best campaigns.
+
+📚 2. Course Management
+
+Course List (Table + Grid toggle):
+Columns: Banner | Title | Teacher | Price | Discount | Enrolled | Sales | Status | Actions.
+
+Filters: Teacher, Category, Status, Price Range.
+
+Create Course Flow:
+
+Upload Banner.
+
+Title, Description (Rich Text).
+
+Assign Teacher (dropdown).
+
+Price + Discount.
+
+Duration + Tags.
+
+Publish/Draft.
+
+Post-Creation Flow (Details Page):
+
+Course Banner + Title + Teacher profile.
+
+Tabs:
+
+Overview (description, price).
+
+Students (list with names, phone numbers).
+
+Classes (linked classes).
+
+Tests (linked tests).
+
+Materials (uploaded files).
+
+Sales (total sales + graph).
+
+Settings (Edit/Delete course).
+
+🏫 3. Class Management
+
+Class List: Table with Course link, Teacher, Time, Students.
+
+Calendar View: Drag-drop reschedule.
+
+New Class Flow:
+
+Enter Title.
+
+Select Course.
+
+Assign Teacher.
+
+Pick Date & Time.
+
+Upload materials.
+
+Post-Creation Page:
+
+Class Info card (Title, Teacher, Time).
+
+Tabs: Materials, Students, Attendance (Mark/Export), Linked Test, Feedback.
+
+📝 4. Test/Exam Management
+
+Tests Table: Test | Linked Course | Attempts | Status | Actions.
+
+Create Test Flow:
+
+Title.
+
+Linked Course/Class.
+
+Add Questions (MCQ/Subjective/CSV Upload).
+
+Duration + Passing Marks.
+
+Publish/Draft toggle.
+
+Post-Creation Page:
+
+Test details (Title, Duration, Linked Course).
+
+Question bank preview.
+
+Tabs: Attempts (with student list + marks), Statistics (Pass rate graph), Export Results.
+
+👩‍🎓 5. Student & Teacher Management
+
+Student Table: Name | Phone | Email | Enrolled Courses | Purchases | Status | Actions.
+
+Teacher Table: Name | Expertise | Courses | Rating | Classes Taken.
+
+Add New: Form or Bulk Upload (CSV).
+
+Profile Pages:
+
+Student: Personal info, enrolled courses, purchase history, chat history.
+
+Teacher: Bio, expertise, assigned courses, performance analytics.
+
+🎟 6. Coupons & Campaigns
+
+Coupons Table: Code | Discount | Validity | Usage | Status | Actions.
+
+Create Coupon Form: Code, Discount %, Expiry, Linked Course/Class, Usage Limit.
+
+Campaign Notifications:
+
+Create Campaign: Title, Message, Target (All/Students/Teachers/Custom), Schedule Time.
+
+Post-Creation Page: Campaign performance stats (open rate, click rate, conversions).
+
+📊 7. Analytics (Role-Specific)
+
+Super Admin View:
+
+Students clicked “Buy Now” (table with phone numbers).
+
+Purchases funnel.
+
+Sales revenue trends.
+
+Best courses & teachers.
+
+Coupon effectiveness.
+
+Sales Team View:
+
+Conversion funnel.
+
+Campaign ROI.
+
+Sales per region (map view optional).
+
+Export Options: CSV, PDF, Excel.
+
+📂 8. Files & Materials
+
+File Manager UI:
+
+Upload (PDF, DOC, PPT, Video).
+
+Folder structure by Course/Class.
+
+Actions: Preview, Download, Delete, Assign to Course/Class.
+
+Post-Upload Page:
+
+Preview pane.
+
+Linked items (courses/tests).
+
+📅 9. Timetable
+
+Calendar UI: Weekly/Monthly view.
+
+Events: Classes, Tests, Campaigns.
+
+Filters: Teacher, Course, Type.
+
+Interaction: Drag to reschedule → auto update DB + notify.
+
+💬 10. Chat Module
+
+Sidebar: List of users (Students/Teachers).
+
+Chat Window:
+
+Messages with timestamps.
+
+Attachments.
+
+Profile details (name, enrolled courses, last active).
+
+Real-Time Updates: WebSocket/Firebase.
+
+⚙️ 11. Settings & Profile
+
+Admin Settings: Profile update, password reset.
+
+Platform Settings: Payment gateways, Branding (logo/colors), Email/SMS configuration.
+
+RBAC Management: Assign/revoke roles (Super Admin, Teacher, Sales, Support).
+
+🔗 Prototype Flow
+
+Every create/edit/delete has a follow-up confirmation screen or details page.
+
+All tables/cards clickable → open detail view.
+
+Sidebar always visible, breadcrumbs enabled.
+
+Global search → finds courses, classes, tests, users.
+
+404 Page: Friendly illustration + button back to Dashboard.
+
+Loading states for every API call.
+
+Responsive (desktop/tablet/mobile).
+
+👉 Final AI Instruction:
+Generate this as a connected interactive prototype.
+
+Role-based dashboards with dynamic sidebar menus.
+
+Fully linked CRUD flows for Course, Class, Test, Users.
+
+Post-creation pages for every entity with tabs and linked analytics.
+
+Live mock analytics charts with sample data.
+
+Error, empty, and loading states included.
+
+All navigation paths valid (no dead ends).
+
+Ready for handoff to frontend/backend teams.
+
+⚡ This is a deepest-level spec prompt → ensures AI outputs a production-grade dashboard with modern UI, backend flow, RBAC, and error-free prototype.
