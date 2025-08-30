@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { Config } from "tailwindcss";
 
 export default {
@@ -98,5 +99,6 @@ export default {
       },
     },
   },
+  // @ts-ignore
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
