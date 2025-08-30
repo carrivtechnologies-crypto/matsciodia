@@ -33,7 +33,17 @@ export default function Dashboard() {
   const [isCreateClassModalOpen, setIsCreateClassModalOpen] = useState(false);
   const [isCreateTestModalOpen, setIsCreateTestModalOpen] = useState(false);
 
-  const { data: stats, isLoading: statsLoading, error } = useQuery({
+  const { data: stats, isLoading: statsLoading, error } = useQuery<{
+    totalStudents: number;
+    totalTeachers: number;
+    totalCourses: number;
+    activeCourses: number;
+    totalClasses: number;
+    totalRevenue: number;
+    salesTrend: number[];
+    studentGrowth: number[];
+    courseCompletions: number[];
+  }>({
     queryKey: ["/api/analytics"],
     retry: false,
   });

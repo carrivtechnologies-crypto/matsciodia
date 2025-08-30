@@ -19,7 +19,15 @@ import {
   University,
 } from "lucide-react";
 
-const navigationItems = {
+interface NavigationItem {
+  icon: any;
+  label: string;
+  href: string;
+  section: string | null;
+  badge?: string;
+}
+
+const navigationItems: Record<string, NavigationItem[]> = {
   super_admin: [
     { icon: Home, label: "Dashboard", href: "/", section: null },
     { icon: BookOpen, label: "Courses", href: "/courses", section: "Education", badge: "24" },
@@ -73,7 +81,7 @@ export default function Sidebar() {
       acc[item.section].push(item);
     }
     return acc;
-  }, {} as Record<string, typeof navItems>);
+  }, {} as Record<string, NavigationItem[]>);
 
   return (
     <aside className="w-64 bg-card glassmorphism border-r border-border flex flex-col" data-testid="sidebar">
@@ -114,7 +122,7 @@ export default function Sidebar() {
         {/* Main items */}
         {groupedNavItems.main?.map((item) => (
           <Link key={item.href} href={item.href}>
-            <a className={`nav-item flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors ${
+            <div className={`nav-item flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors cursor-pointer ${
               location === item.href ? 'active bg-primary/10 text-primary' : ''
             }`} data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
               <item.icon className="w-5 h-5" />
@@ -124,7 +132,7 @@ export default function Sidebar() {
                   {item.badge}
                 </span>
               )}
-            </a>
+            </div>
           </Link>
         ))}
 
@@ -138,7 +146,7 @@ export default function Sidebar() {
               </p>
               {items.map((item) => (
                 <Link key={item.href} href={item.href}>
-                  <a className={`nav-item flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors ${
+                  <div className={`nav-item flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors cursor-pointer ${
                     location === item.href ? 'active bg-primary/10 text-primary' : ''
                   }`} data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
                     <item.icon className="w-5 h-5" />
@@ -154,7 +162,7 @@ export default function Sidebar() {
                         {item.badge}
                       </span>
                     )}
-                  </a>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -165,12 +173,12 @@ export default function Sidebar() {
       {/* Settings */}
       <div className="p-4 border-t border-border">
         <Link href="/settings">
-          <a className={`nav-item flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors ${
+          <div className={`nav-item flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors cursor-pointer ${
             location === '/settings' ? 'active bg-primary/10 text-primary' : ''
           }`} data-testid="nav-settings">
             <Settings className="w-5 h-5" />
             <span className="font-medium">Settings</span>
-          </a>
+          </div>
         </Link>
       </div>
     </aside>
